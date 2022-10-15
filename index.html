@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+
+<img src="tt.Jpg"
+width="600"
+height="500">
+
+<p>
+// C++ code
+//
+#include<LiquidCrystal.h>
+LiquidCrystal lcd = LiquidCrystal(2,3,4,5,6,7);<br>
+int red = 11;<br>
+int yelo = 12;<br>
+int green = 13;<br>
+int buzzor = 8;<br>
+int gas = A5;<br>
+void setup()<br>
+{<br>
+  pinMode(red,OUTPUT);<br>
+  
+  pinMode(yelo,OUTPUT);<br>
+  
+  pinMode(green,OUTPUT);<br>
+  
+  pinMode(buzzor,OUTPUT);<br>
+  
+  pinMode(gas,INPUT);<br>
+  
+  lcd.begin(16,2);<br>
+  Serial.begin(9600);<br>
+  <br>
+}
+
+void loop()<br>
+{<br>
+  int value = analogRead(gas);<br>
+  Serial.println(value);<br>
+  
+  if (value > 90 && value < 150){<br>
+  digitalWrite(green,HIGH);<br>
+  lcd.setCursor(0,0);<br>
+  lcd.print("green is ON");<br>
+  lcd.setCursor(0,1);<br>
+  lcd.print(value);<br>
+  noTone(buzzor);<br>
+  
+  }else if(value > 200 && value < 300){<br>
+  digitalWrite(green,LOW);<br>
+  digitalWrite(yelo,HIGH);<br>
+  lcd.clear();<br>
+  lcd.setCursor(0,0);<br>
+  lcd.print("Yelo is ON");<br>
+  lcd.setCursor(0,1);<br>
+  lcd.print(value);<br>
+  tone(buzzor,50);<br>
+  digitalWrite(buzzor,HIGH);<br>
+  }
+  
+}	
+</p>
+</body>
+</html>
