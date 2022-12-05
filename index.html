@@ -6,48 +6,91 @@
 	<title></title>
 </head>
 <body>
+	
+	
+	<img src="hhh/Screenshot (16).png">
+	
+	
+	#include <LiquidCrystal.h> <br>
+#include<Keypad.h>  <br>
 
+char keys[4][4]={ <br>
+  {'1','2','3','A'}, <br>
+  {'4','6','6','B'}, <br>
+  {'7','8','9','C'}, <br>
+  {'*','0','#','D'}, <br>
+}; <br>
+String passcode=""; <br>
+ byte R[4]={13,10,9,8}; <br>
+ byte C[4]={7,6,A5,A4}; <br>
 
+Keypad keypad = Keypad(makeKeymap(keys),R,C,4,4); <br>
 
+<br>
+LiquidCrystal lcd(12,11,5,4,3,2); <br>
 
-<p>
-        height: 400,<br>
-        child: Row(<br>
-          mainAxisAlignment: MainAxisAlignment.center,<br>
-          children: [<br>
-            ElevatedButton(<br>
-                onPressed: (() {<br>
-                  setState(() {<br>
-                    _cont++;<br>
-                  });<br>
-                }),<br>
-                child: Icon(<br>
-                  Icons.add,<br>
-                  size: 40,<br>
-                  color: Colors.white,<br>
-                )),<br>
-            Text('$_cont', style: TextStyle(fontSize: 40)),<br>
-            ElevatedButton(<br>
-                onPressed: (() {<br>
-                  setState(() {<br>
-                    _cont--;<br>
-                  });<br>
-                }),<br>
-                child: Icon(<br>
-                  Icons.remove,<br>
-                  size: 40,<br>
-                  color: Colors.white,<br>
-                ),<br>
-                style: ElevatedButton.styleFrom(shape: CircleBorder())),<br>
-            ElevatedButton(<br>
-                onPressed: (() {<br>
-                  setState(() {<br>
-                    _cont = 0;<br>
-                  });<br>
-                }),<br>
-                child: Icon(Icons.home))<br>
-          ]//childreen,<br>
-        ),//row	<br>
+void setup()<br>
+{<br>
+  lcd.begin(16, 2);<br>
+  lcd.print("enterd key: "); <br>
+  Serial.begin(9600); <br>
+}<br>
+
+void loop()<br>
+{<br>
+  char keyVal = keypad.getKey(); <br>
+  
+ 
+  
+  if(keyVal != NO_KEY){ <br>
+    
+    passcode +=keyVal; <br>
+
+    lcd.setCursor(12,0); <br>
+    lcd.print(passcode); <br>
+    if(passcode=="1000"){ <br>
+      
+    Serial.println("You Successflly logged in"); <br>
+    passcode=""; <br>
+    } <br>
+  
+  } <br>
+}    <br>
+	
+	<h1>__________________________________________________________________</h1> <br>
+
+	#include<Servo.h> <br>
+Servo servo; <br>
+int flex = A0; <br>
+
+int motionState = 0; <br>
+void setup() <br>
+{ <br>
+  pinMode(flex, INPUT); <br>
+  pinMode(13, OUTPUT);// led y taybat ba motion sensor aka <br>
+  pinMode(2, INPUT);// taybat ba motion sensor <br>
+  servo.attach(A1); <br>
+  Serial.begin(9600); <br>
+} <br>
+
+void loop() <br>
+{ <br>
+  int flexVal = analogRead(flex); <br>
+  motionState = digitalRead(2); <br>
+  
+  if (motionState == HIGH) { <br>
+    digitalWrite(13, HIGH); <br>
+    Serial.println("Sensor activated!"); <br>
+  } else {  <br>
+    digitalWrite(13, LOW); <br>
+  } <br>
+  delay(10); <br>
+  
+  flexVal = map(flexVal,52,256,0,180);  <br>
+  
+  servo.write(flexVal); <br>
+  
+}
+	
 </p>
-</body>
 </html>
