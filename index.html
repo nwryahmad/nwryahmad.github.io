@@ -391,7 +391,145 @@ class _helloState extends State<hello> {<br>
   }<br>
 }<br>
 	
-	
+	///////////////////////////////////////////
+	/////////////////////
+	<h1>gestur</h1>
+
+import 'package:application/second.dart';<br>
+import 'package:flutter/material.dart';<br>
+
+void main() => runApp(MaterialApp(<br>
+      home: life(),<br>
+    ));<br>
+
+class life extends StatefulWidget {<br>
+  const life({super.key});<br>
+
+  @override<br>
+  State<life> createState() => _lifeState();<br>
+}<br>
+
+class _lifeState extends State<life> {<br>
+  String text = 'non';<br>
+  Color color = Colors.amber;<br>
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Scaffold(<br>
+      body: Center(<br>
+        child: GestureDetector(<br>
+          onTap: () {<br>
+            setState(() {<br>
+              Navigator.push(<br>
+                  context,<br>
+                  MaterialPageRoute(<br>
+                    builder: (context) => secondclass(),<br>
+                  ));<br>
+            });<br>
+          },<br>
+          onDoubleTap: () {<br>
+            setState(() {<br>
+              text = 'ondoubletap';<br>
+              color = Colors.redAccent;<br>
+            });<br>
+          },<br>
+          onLongPress: () {<br>
+            setState(() {<br>
+              text = 'long';<br>
+              color = Colors.black;<br>
+            });<br>
+          },<br>
+          onHorizontalDragEnd: (DragEndDetails details) {<br>
+            setState(() {<br>
+              text = 'horizantal';<br>
+              color = Colors.purple;<br>
+            });<br>
+          },<br>
+          child: Container(<br>
+            height: 200,<br>
+            width: 200,<br>
+            decoration: BoxDecoration(<br>
+              borderRadius: BorderRadius.circular(20),<br>
+              color: color,<br>
+            ),<br>
+            child: Center(<br>
+              child: Text(<br>
+                '$text',<br>
+                style: TextStyle(fontSize: 40),<br>
+              ),<br>
+            ),<br>
+          ),<br>
+        ),<br>
+      ),<br>
+    );<br>
+  }<br>
+}<br>
+
+
+import 'package:application/third.dart';<br>
+import 'package:flutter/material.dart';<br>
+import 'package:flutter/src/widgets/container.dart';<br>
+import 'package:flutter/src/widgets/framework.dart';<br>
+
+class secondclass extends StatefulWidget {<br>
+  const secondclass({super.key});<br>
+
+  @override<br>
+  State<secondclass> createState() => _secondclassState();<br>
+}<br>
+
+class _secondclassState extends State<secondclass> {<br>
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Scaffold(<br>
+      appBar: AppBar(<br>
+        title: Text('second screen'),<br>
+        backgroundColor: Colors.amber,<br>
+      ),<br>
+      body: Column(<br>
+        mainAxisAlignment: MainAxisAlignment.center,<br>
+        children: [<br>
+          Center(<br>
+            child: ElevatedButton(<br>
+                onPressed: () {<br>
+                  Navigator.pop(context);<br>
+                },{<br>
+                child: Text('go back')),{<br>
+          ),{<br>
+          Center({<br>
+            child: ElevatedButton({<br>
+                onPressed: () {{<br>
+                  Navigator.push({<br>
+                      context,{<br>
+                      MaterialPageRoute({<br>
+                        builder: (context) => thirdscren(),{<br>
+                      ));{<br>
+                },{<br>
+                child: Text('go third')),{<br>
+          ){<br>
+        ],{<br>
+      ),{<br>
+    );{<br>
+  }{<br>
+}v
+
+
+import 'package:flutter/material.dart';{<br>
+import 'package:flutter/src/widgets/container.dart';{<br>
+import 'package:flutter/src/widgets/framework.dart';{<br>
+
+class thirdscren extends StatelessWidget {{<br>
+  const thirdscren({super.key});{<br>
+
+  @override{<br>
+  Widget build(BuildContext context) {{<br>
+    return Scaffold({<br>
+      appBar: AppBar(<br>
+        title: Text('third screen'),<br>
+        backgroundColor: Colors.redAccent,<br>
+      ),<br>
+    );<br>
+  }<br>
+}<br>
 	
 	
 	
