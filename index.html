@@ -7,96 +7,96 @@
 </head>
 <body>
 	
-import 'dart:async';
-import 'dart:ui';
+import 'dart:async'; <br>
+import 'dart:ui'; <br>
 
-import 'package:final_project/MyContainers.dart';
-import 'package:final_project/home.dart';
-import 'package:final_project/item.dart';
-import 'package:final_project/login.dart';
-import 'package:flutter/material.dart';
+import 'package:final_project/MyContainers.dart'; <br>
+import 'package:final_project/home.dart'; <br>
+import 'package:final_project/item.dart'; <br>
+import 'package:final_project/login.dart'; <br>
+import 'package:flutter/material.dart'; <br>
 
-void main() {
-  runApp(MaterialApp(
-    home: SplashScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
+void main() { <br>
+  runApp(MaterialApp( <br>
+    home: SplashScreen(), <br>
+    debugShowCheckedModeBanner: false, <br>
+  )); <br>
+} <br>
+ <br>
+class SplashScreen extends StatefulWidget { <br>
+  const SplashScreen({super.key}); <br>
+ <br>
+  @override <br>
+  State<SplashScreen> createState() => _SplashScreenState(); <br>
+} <br>
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    Timer(
-      Duration(seconds: 3),
-      () {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LoginScreen(),
-            ));
-      },
-    );
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(246, 235, 205, 8),
-      body: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: double.infinity,
-            child: Image.asset('assets/paint.png'),
-            color: Color.fromRGBO(202, 237, 235, 10),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: double.infinity,
-            child: Column(
-              children: const [
-                SizedBox(
-                  height: 0,
-                ),
-                LinearProgressIndicator(
-                  backgroundColor: Color.fromARGB(255, 254, 254, 254),
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  minHeight: 15,
-                ),
-                SizedBox(
-                  height: 70,
-                ),
-                Center(
-                    child: Text(
-                  'Welcome',
-                  style: TextStyle(
-                      color: Color.fromRGBO(202, 237, 235, 10),
-                      fontSize: 60,
-                      fontWeight: FontWeight.bold,
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(1.0, 5.0),
-                          blurRadius: 10.0,
-                          color: Color.fromARGB(255, 3, 3, 3),
-                        )
-                      ]),
-                )),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+class _SplashScreenState extends State<SplashScreen> { <br>
+  @override <br>
+  void initState() { <br>
+    Timer( <br>
+      Duration(seconds: 3), <br>
+      () { <br>
+        Navigator.pushReplacement( <br>
+            context, <br>
+            MaterialPageRoute( <br>
+              builder: (context) => LoginScreen(), <br>
+            )); <br>
+      }, <br>
+    ); <br>
+    super.initState(); <br>
+  } <br>
+ <br>
+  @override <br>
+  Widget build(BuildContext context) { <br>
+    return Scaffold( <br>
+      backgroundColor: Color.fromARGB(246, 235, 205, 8), <br>
+      body: Column( <br>
+        children: [ <br>
+          Container( <br>
+            height: MediaQuery.of(context).size.height / 2, <br>
+            width: double.infinity, <br>
+            child: Image.asset('assets/paint.png'), <br>
+            color: Color.fromRGBO(202, 237, 235, 10), <br>
+          ), <br>
+          Container( <br>
+            height: MediaQuery.of(context).size.height / 2, <br>
+            width: double.infinity, <br>
+            child: Column( <br>
+              children: const [ <br>
+                SizedBox( <br>
+                  height: 0, <br>
+                ), <br> 
+                LinearProgressIndicator( <br>
+                  backgroundColor: Color.fromARGB(255, 254, 254, 254), <br>
+                  color: Color.fromARGB(255, 0, 0, 0), <br>
+                  minHeight: 15, <br>
+                ), <br>
+                SizedBox( <br>
+                  height: 70, <br>
+                ), <br>
+                Center( <br>
+                    child: Text( <br>
+                  'Welcome', <br>
+                  style: TextStyle( <br>
+                      color: Color.fromRGBO(202, 237, 235, 10), <br>
+                      fontSize: 60, <br>
+                      fontWeight: FontWeight.bold, <br>
+                      shadows: <Shadow>[ <br>
+                        Shadow( <br>
+                          offset: Offset(1.0, 5.0), <br>
+                          blurRadius: 10.0, <br>
+                          color: Color.fromARGB(255, 3, 3, 3), <br>
+                        ) <br>
+                      ]), <br>
+                )), <br>
+              ], <br>
+            ), <br>
+          ), <br>
+        ], <br>
+      ), <br>
+    ); <br>
+  } <br>
+} <br>
 
 	
 </p>
