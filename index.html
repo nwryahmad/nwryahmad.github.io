@@ -327,8 +327,69 @@ class ViedoPage extends StatelessWidget {<br>
   }<br>
 }<br>
 	
-	
-	
+//////////////////////////////////////////////////////
+	<h1>count</h1>
+	import 'package:flutter/material.dart';<br>
+
+void main() => runApp(MaterialApp(<br>
+      home: hello(),<br>
+    ));<br>
+
+class hello extends StatefulWidget {<br>
+  const hello({super.key});<br>
+
+  @override<br>
+  State<hello> createState() => _helloState();<br>
+}<br>
+
+class _helloState extends State<hello> {<br>
+  int counter = 0;<br>
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Scaffold(<br>
+      body: Container(<br>
+        height: 400,<br>
+        child: Row(<br>
+          mainAxisAlignment: MainAxisAlignment.center,<br>
+          children: [<br>
+            ElevatedButton(<br>
+              onPressed: () {<br>
+                setState(() {<br>
+                  counter++;<br>
+                });<br>
+              },<br>
+              child: Icon(<br>
+                Icons.add,<br>
+                size: 20,<br>
+              ),<br>
+              style: ElevatedButton.styleFrom(<br>
+                shape: CircleBorder(),<br>
+              ),<br>
+            ),<br>
+            Text(<br>
+              '$counter',<br>
+              style: TextStyle(fontSize: 40),<br>
+            ),<br>
+            ElevatedButton(<br>
+              onPressed: () {<br>
+                setState(() {<br>
+                  counter--;
+                });<br>
+              },<br>
+              child: Icon(<br>
+                Icons.remove,<br>
+                size: 20,<br>
+              ),<br>
+              style: ElevatedButton.styleFrom(<br>
+                shape: CircleBorder(),<br>
+              ),<br>
+            ),<br>
+          ],<br>
+        ),<br>
+      ),<br>
+    );<br>
+  }<br>
+}<br>
 	
 	
 	
