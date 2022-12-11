@@ -7,93 +7,97 @@
 </head>
 <body>
 	
-	
-	<img src="Screenshot (16).png" width="550" height="350">
-	<img src="Screenshot (17).png"  width="550" height="350">
-	
-	<br>
-	<br>
-	<br>
-	#include <LiquidCrystal.h> <br>
-#include<Keypad.h>  <br>
+import 'dart:async';
+import 'dart:ui';
 
-char keys[4][4]={ <br>
-  {'1','2','3','A'}, <br>
-  {'4','6','6','B'}, <br>
-  {'7','8','9','C'}, <br>
-  {'*','0','#','D'}, <br>
-}; <br>
-String passcode=""; <br>
- byte R[4]={13,10,9,8}; <br>
- byte C[4]={7,6,A5,A4}; <br>
+import 'package:final_project/MyContainers.dart';
+import 'package:final_project/home.dart';
+import 'package:final_project/item.dart';
+import 'package:final_project/login.dart';
+import 'package:flutter/material.dart';
 
-Keypad keypad = Keypad(makeKeymap(keys),R,C,4,4); <br>
-
-<br>
-LiquidCrystal lcd(12,11,5,4,3,2); <br>
-
-void setup()<br>
-{<br>
-  lcd.begin(16, 2);<br>
-  lcd.print("enterd key: "); <br>
-  Serial.begin(9600); <br>
-}<br>
-
-void loop()<br>
-{<br>
-  char keyVal = keypad.getKey(); <br>
-  
- 
-  
-  if(keyVal != NO_KEY){ <br>
-    
-    passcode +=keyVal; <br>
-
-    lcd.setCursor(12,0); <br>
-    lcd.print(passcode); <br>
-    if(passcode=="1000"){ <br>
-      
-    Serial.println("You Successflly logged in"); <br>
-    passcode=""; <br>
-    } <br>
-  
-  } <br>
-}    <br>
-	
-	<h1>__________________________________________________________________</h1> <br>
-
-	#include<Servo.h> <br>
-Servo servo; <br>
-int flex = A0; <br>
-
-int motionState = 0; <br>
-void setup() <br>
-{ <br>
-  pinMode(flex, INPUT); <br>
-  pinMode(13, OUTPUT);// led y taybat ba motion sensor aka <br>
-  pinMode(2, INPUT);// taybat ba motion sensor <br>
-  servo.attach(A1); <br>
-  Serial.begin(9600); <br>
-} <br>
-
-void loop() <br>
-{ <br>
-  int flexVal = analogRead(flex); <br>
-  motionState = digitalRead(2); <br>
-  
-  if (motionState == HIGH) { <br>
-    digitalWrite(13, HIGH); <br>
-    Serial.println("Sensor activated!"); <br>
-  } else {  <br>
-    digitalWrite(13, LOW); <br>
-  } <br>
-  delay(10);  <br>
-  
-  flexVal = map(flexVal,52,256,0,180);  <br>
-  
-  servo.write(flexVal); <br>
-  
+void main() {
+  runApp(MaterialApp(
+    home: SplashScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Timer(
+      Duration(seconds: 3),
+      () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(),
+            ));
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromARGB(246, 235, 205, 8),
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 2,
+            width: double.infinity,
+            child: Image.asset('assets/paint.png'),
+            color: Color.fromRGBO(202, 237, 235, 10),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height / 2,
+            width: double.infinity,
+            child: Column(
+              children: const [
+                SizedBox(
+                  height: 0,
+                ),
+                LinearProgressIndicator(
+                  backgroundColor: Color.fromARGB(255, 254, 254, 254),
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  minHeight: 15,
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+                Center(
+                    child: Text(
+                  'Welcome',
+                  style: TextStyle(
+                      color: Color.fromRGBO(202, 237, 235, 10),
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      shadows: <Shadow>[
+                        Shadow(
+                          offset: Offset(1.0, 5.0),
+                          blurRadius: 10.0,
+                          color: Color.fromARGB(255, 3, 3, 3),
+                        )
+                      ]),
+                )),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 	
 </p>
 </html>
