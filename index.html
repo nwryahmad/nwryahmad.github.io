@@ -193,7 +193,148 @@ class _SplashScreenState extends State<SplashScreen> { <br>
   } <br>
 } <br>
 
+/////////////////////////////////////////////////////////////////
+	////////////////////////////////////////
+	<h1>tabs</h1>
+	
+	
+import 'package:flutter/material.dart';<br>
+import 'package:renas2/home.dart';<br>
+import 'package:renas2/music.dart';<br>
+import 'package:renas2/viedo.dart';<br>
 
+void main() => runApp(MaterialApp(<br>
+      home: Renas(),<br>
+    ));<br>
+
+class Renas extends StatefulWidget {<br>
+  const Renas({super.key});<br>
+
+  @override<br>
+  State<Renas> createState() => _RenasState();<br>
+}<br>
+
+class _RenasState extends State<Renas> {<br>
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return DefaultTabController(<br>
+        length: 3,<br>
+        child: Scaffold(<br>
+          appBar: AppBar(<br>
+            flexibleSpace: Container(<br>
+              decoration: BoxDecoration(<br>
+                  gradient: LinearGradient(<br>
+                      colors: [Colors.red, Colors.purple],<br>
+                      begin: Alignment.bottomRight,<br>
+                      end: Alignment.bottomLeft)),<br>
+            ),<br>
+            title: Center(child: Text('welcome')),<br>
+            bottom: TabBar(<br>
+              tabs: [<br>
+                Tab(<br>
+                  icon: Icon(<br>
+                    Icons.home,<br>
+                    size: 20,<br>
+                  ),<br>
+                ),<br>
+                Tab(<br>
+                  icon: Icon(<br>
+                    Icons.music_note,<br>
+                    size: 20,<br>
+                  ),<br>
+                ),<br>
+                Tab(<br>
+                  icon: Icon(<br>
+                    Icons.video_call,<br>
+                    size: 20,<br>
+                  ),<br>
+                )<br>
+              ],<br>
+            ),<br>
+          ),<br>
+          body: TabBarView(<br>
+            children: [<br>
+              HomePage(),<br>
+              Musicpage(),<br>
+              ViedoPage(),<br>
+            ],<br>
+          ),<br>
+        ));<br>
+  }<br>
+}<br>
+
+
+import 'package:flutter/animation.dart';<br>
+import 'package:flutter/material.dart';<br>
+import 'package:flutter/src/widgets/container.dart';<br>
+import 'package:flutter/src/widgets/framework.dart';<br>
+
+class HomePage extends StatelessWidget {<br>
+  const HomePage({super.key});<br>
+
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Container(<br>
+      color: Colors.blue,<br>
+      child: Column(<br>
+        children: [<br>
+          Container(<br>
+            height: 400,<br>
+            width: double.infinity,<br>
+            color: Colors.pink,<br>
+          ),<br>
+          Text(<br>
+            'welcome',<br>
+            style: TextStyle(fontSize: 30),<br>
+          )<br>
+        ],<br>
+      ),<br>
+    );<br>
+  }<br>
+}<br>
+
+
+import 'package:flutter/animation.dart';<br>
+import 'package:flutter/material.dart';<br>
+import 'package:flutter/src/widgets/container.dart';<br>
+import 'package:flutter/src/widgets/framework.dart';<br>
+
+class Musicpage extends StatelessWidget {<br>
+  const Musicpage({super.key});<br>
+
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Container(<br>
+      color: Colors.red,<br>
+    );<br>
+  }<br>
+}<br>
+
+
+import 'package:flutter/animation.dart';<br>
+import 'package:flutter/material.dart';<br>
+import 'package:flutter/src/widgets/container.dart';<br>
+import 'package:flutter/src/widgets/framework.dart';<br>
+
+class ViedoPage extends StatelessWidget {<br>
+  const ViedoPage({super.key});<br>
+
+  @override<br>
+  Widget build(BuildContext context) {<br>
+    return Container(<br>
+      color: Colors.amber,<br>
+    );<br>
+  }<br>
+}<br>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </p>
 </html>
